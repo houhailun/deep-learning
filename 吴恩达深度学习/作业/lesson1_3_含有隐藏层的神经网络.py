@@ -26,9 +26,10 @@ shape_X = X.shape
 shape_Y = Y.shape
 m = shape_X[1]  # 训练集样本个数
 
-print ('The shape of X is: ' + str(shape_X))
-print ('The shape of Y is: ' + str(shape_Y))
-print ('I have m = %d training examples!' % (m))
+print('The shape of X is: ' + str(shape_X))
+print('The shape of Y is: ' + str(shape_Y))
+print('I have m = %d training examples!' % m)
+
 
 def lg_sklearn():
     # 简单的逻辑回归
@@ -142,7 +143,7 @@ def compute_cost(A2, Y, parameters):
     :return:
     """
     m = Y.shape[1]
-    logprobs = np.multiply(np.log(A2), Y) + np.multiply(np.log(1-A2), (1-Y))
+    logprobs = np.multiply(np.log(A2), Y) + np.multiply(np.log(1-A2), (1-Y))  # multiply() 数组和矩阵对应位置相乘，输出与相乘数组/矩阵的大小一致
     cost = -1/m * np.sum(logprobs)
     cost = np.squeeze(cost)  # makes sure cost is the dimension we expect.
                              # E.g., turns [[17]] into 17
@@ -212,17 +213,13 @@ def update_parameters(parameters, grads, learning_rate=1.2):
 
 # ------------------ 组合 ------------------------
 # GRADED FUNCTION: nn_model
-def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
+def nn_model(X, Y, n_h, num_iterations=10000, print_cost=False):
     np.random.seed(3)
     n_x = layer_sizes(X, Y)[0]
     n_y = layer_sizes(X, Y)[2]
 
     # Initialize parameters, then retrieve W1, b1, W2, b2. Inputs: "n_x, n_h, n_y". Outputs = "W1, b1, W2, b2, parameters".
     parameters = initialize_parameters(n_x, n_h, n_y)
-    W1 = parameters["W1"]
-    b1 = parameters["b1"]
-    W2 = parameters["W2"]
-    b2 = parameters["b2"]
     # Loop (gradient descent)
     for i in range(0, num_iterations):
         # Forward propagation. Inputs: "X, parameters". Outputs: "A2, cache".

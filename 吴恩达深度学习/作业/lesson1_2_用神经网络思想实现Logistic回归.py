@@ -9,7 +9,7 @@ import h5py
 import scipy
 from PIL import Image
 from scipy import ndimage
-from lr_utils import load_dataset
+from utils.lr_utils import load_dataset
 
 # 构建一个简单的图像识别算法，该算法可以将图片正确分类为猫和非猫
 train_set_x_orig, train_set_y, test_set_x_orig, test_set_y, classes = load_dataset()
@@ -34,7 +34,7 @@ print ("test_set_x shape: " + str(test_set_x_orig.shape))
 print ("test_set_y shape: " + str(test_set_y.shape))
 
 # 转换为1维向量: (num_px * num_px * 3, 样本数)
-train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[0], -1).T
+train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[0], -1).T  # (12288, 209)
 test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[0], -1).T
 
 # 标准化数据
