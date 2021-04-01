@@ -23,7 +23,6 @@ x_test = keras.preprocessing.sequence.pad_sequences(x_test, maxlen, padding='pos
 print(x_train.shape, ' ', y_train.shape)
 print(x_test.shape, ' ', y_test.shape)
 
-
 # 2、LSTM
 # def lstm_model():
 #     model = keras.Sequential([
